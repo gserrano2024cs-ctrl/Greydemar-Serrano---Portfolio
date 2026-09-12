@@ -1,132 +1,34 @@
-/* Configuración básica para que veas el efecto (puedes borrarlo luego) */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: #121212; /* Fondo oscuro para que resalte el efecto cristal */
-  height: 200vh; /* Solo para probar que la barra sigue flotando al hacer scroll */
-}
+<!-- Isla Flotante de Navegación -->
+<nav class="floating-dock">
+  <ul class="dock-list">
+    
+    <!-- 1. About Me (Icono de Notas) -->
+    <li class="dock-item" data-tooltip="About Me">
+      <a href="#about" class="dock-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5z"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2zM8 7h8M8 11h8M8 15h6"/></svg>
+      </a>
+    </li>
 
-/* =========================================
-   ESTILOS DE LA BARRA FLOTANTE (DOCK)
-   ========================================= */
+    <!-- 2. Proyectos (Icono de Fotos/Galería) -->
+    <li class="dock-item" data-tooltip="Projects">
+      <a href="#projects" class="dock-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </a>
+    </li>
 
-.floating-dock {
-  position: fixed;
-  bottom: 24px; /* Separación desde abajo */
-  left: 50%;
-  transform: translateX(-50%); /* Centrado perfecto */
-  
-  /* Efecto Glassmorphism (Cristal) */
-  background: rgba(255, 255, 255, 0.08); /* Fondo semi-transparente */
-  backdrop-filter: blur(16px); /* Desenfoque del fondo */
-  -webkit-backdrop-filter: blur(16px); /* Soporte para Safari */
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Borde sutil brillante */
-  
-  border-radius: 100px; /* Forma de píldora */
-  padding: 10px 16px;
-  z-index: 9999; /* Siempre por encima de todo */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra elegante */
-}
+    <!-- 3. Servicios (Icono de Carita/Ayuda) -->
+    <li class="dock-item" data-tooltip="Services">
+      <a href="#services" class="dock-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      </a>
+    </li>
 
-.dock-list {
-  display: flex;
-  gap: 16px; /* Espacio entre los iconos */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
+    <!-- 4. Contáctame (Icono de Correo) -->
+    <li class="dock-item" data-tooltip="Contact Me">
+      <a href="#contact" class="dock-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </li>
 
-.dock-item {
-  position: relative; /* Necesario para posicionar el texto tooltip */
-  display: flex;
-  justify-content: center;
-}
-
-/* El botón circular de cada icono */
-.dock-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  text-decoration: none;
-  /* Transición suave para las animaciones */
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* Estilos de los Iconos SVG */
-.dock-link svg {
-  width: 22px;
-  height: 22px;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-  transition: all 0.3s ease;
-}
-
-/* Efecto al pasar el mouse (Hover) */
-.dock-link:hover {
-  background: rgba(255, 255, 255, 0.2); /* Se ilumina */
-  transform: scale(1.15) translateY(-5px); /* Crece y sube un poco */
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-}
-
-/* =========================================
-   TOOLTIPS (LOS TEXTOS FLOTANTES)
-   ========================================= */
-
-.dock-item::before {
-  content: attr(data-tooltip); /* Toma el texto del HTML */
-  position: absolute;
-  top: -45px;
-  background: rgba(0, 0, 0, 0.85);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px) scale(0.9);
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  white-space: nowrap;
-  pointer-events: none;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dock-item:hover::before {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1); /* El texto aparece y sube */
-}
-
-/* =========================================
-   DISEÑO RESPONSIVE (CELULARES)
-   ========================================= */
-@media (max-width: 600px) {
-  .floating-dock {
-    bottom: 16px;
-    padding: 8px 12px;
-  }
-  .dock-list {
-    gap: 12px;
-  }
-  .dock-link {
-    width: 44px;
-    height: 44px;
-  }
-  .dock-link svg {
-    width: 20px;
-    height: 20px;
-  }
-  /* En móviles quitamos el hover del texto porque no hay mouse */
-  .dock-item::before {
-    display: none; 
-  }
-}
+  </ul>
+</nav>
