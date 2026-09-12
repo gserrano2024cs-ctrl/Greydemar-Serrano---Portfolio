@@ -1,9 +1,8 @@
-/* Configuración básica para que veas el efecto (puedes borrarlo luego) */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: #121212; /* Fondo oscuro para que resalte el efecto cristal */
-  height: 200vh; /* Solo para probar que la barra sigue flotando al hacer scroll */
+  background: #121212; 
+  height: 200vh; 
 }
 
 /* =========================================
@@ -12,69 +11,60 @@ body {
 
 .floating-dock {
   position: fixed;
-  bottom: 24px; /* Separación desde abajo */
+  bottom: 24px;
   left: 50%;
-  transform: translateX(-50%); /* Centrado perfecto */
+  transform: translateX(-50%); 
   
-  /* Efecto Glassmorphism (Cristal) */
-  background: rgba(255, 255, 255, 0.08); /* Fondo semi-transparente */
-  backdrop-filter: blur(16px); /* Desenfoque del fondo */
-  -webkit-backdrop-filter: blur(16px); /* Soporte para Safari */
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Borde sutil brillante */
+  /* Efecto Glassmorphism más parecido a macOS */
+  background: rgba(255, 255, 255, 0.15); 
+  backdrop-filter: blur(20px); 
+  -webkit-backdrop-filter: blur(20px); 
+  border: 1px solid rgba(255, 255, 255, 0.2); 
   
-  border-radius: 100px; /* Forma de píldora */
-  padding: 10px 16px;
-  z-index: 9999; /* Siempre por encima de todo */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+  border-radius: 24px; /* Un poco más cuadrado, estilo dock moderno de Mac */
+  padding: 8px 12px;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .dock-list {
   display: flex;
-  gap: 16px; /* Espacio entre los iconos */
+  gap: 12px; 
   list-style: none;
   margin: 0;
   padding: 0;
-  align-items: center;
+  align-items: flex-end; /* Alineamos abajo para que crezcan hacia arriba */
 }
 
 .dock-item {
-  position: relative; /* Necesario para posicionar el texto tooltip */
+  position: relative;
   display: flex;
   justify-content: center;
 }
 
-/* El botón circular de cada icono */
+/* El enlace ya no tiene fondo circular, es invisible, solo contiene la imagen */
 .dock-link {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  padding-bottom: 5px; /* Espacio sutil abajo */
+}
+
+/* Estilos de las Imágenes (Iconos Mac) */
+.mac-icon {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  text-decoration: none;
-  /* Transición suave para las animaciones */
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  /* El efecto de salto tipo Mac */
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: bottom center; /* Para que crezca desde la base */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); /* Sombra bonita al icono */
 }
 
-/* Estilos de los Iconos SVG */
-.dock-link svg {
-  width: 22px;
-  height: 22px;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-  transition: all 0.3s ease;
-}
-
-/* Efecto al pasar el mouse (Hover) */
-.dock-link:hover {
-  background: rgba(255, 255, 255, 0.2); /* Se ilumina */
-  transform: scale(1.15) translateY(-5px); /* Crece y sube un poco */
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+/* Efecto al pasar el mouse (Hover) - Crecen como en Mac */
+.dock-link:hover .mac-icon {
+  transform: scale(1.4) translateY(-10px); 
+  margin: 0 10px; /* Separa los iconos vecinos un poco */
 }
 
 /* =========================================
@@ -82,28 +72,30 @@ body {
    ========================================= */
 
 .dock-item::before {
-  content: attr(data-tooltip); /* Toma el texto del HTML */
+  content: attr(data-tooltip);
   position: absolute;
   top: -45px;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
   font-size: 13px;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 4px 10px;
+  border-radius: 6px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px) scale(0.9);
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
   white-space: nowrap;
   pointer-events: none;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.3px;
 }
 
 .dock-item:hover::before {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0) scale(1); /* El texto aparece y sube */
+  top: -55px; /* Sube más porque el icono creció mucho */
+  transform: translateY(0) scale(1);
 }
 
 /* =========================================
@@ -112,20 +104,21 @@ body {
 @media (max-width: 600px) {
   .floating-dock {
     bottom: 16px;
-    padding: 8px 12px;
+    padding: 6px 10px;
+    border-radius: 20px;
   }
   .dock-list {
-    gap: 12px;
+    gap: 8px;
   }
-  .dock-link {
-    width: 44px;
-    height: 44px;
+  .mac-icon {
+    width: 40px;
+    height: 40px;
   }
-  .dock-link svg {
-    width: 20px;
-    height: 20px;
+  /* En móviles quitamos los efectos locos y tooltips */
+  .dock-link:hover .mac-icon {
+    transform: none;
+    margin: 0;
   }
-  /* En móviles quitamos el hover del texto porque no hay mouse */
   .dock-item::before {
     display: none; 
   }
