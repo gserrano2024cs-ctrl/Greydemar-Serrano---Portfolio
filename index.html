@@ -3,45 +3,162 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Portafolio</title>
+  <title>Greydemar Serrano | Estrategia, Marketing & Web</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <!-- Isla Flotante de Navegación -->
+  <!-- Contenedor Principal (El "Escritorio" Blanco) -->
+  <main class="desktop-environment">
+
+    <!-- 1. VENTANA PRINCIPAL: Sobre Mí (El Gancho) -->
+    <section class="mac-window" id="about">
+      <div class="window-header">
+        <div class="mac-buttons">
+          <span class="btn close"></span><span class="btn min"></span><span class="btn max"></span>
+        </div>
+        <div class="window-title">Hola.txt - Greydemar Serrano</div>
+      </div>
+      <div class="window-content">
+        <h1>Convierto estrategia en <span class="highlight">ingresos.</span></h1>
+        <p class="pitch">Diseño landing pages que capturan leads, gestiono comunidades que generan resultados medibles y automatizo procesos con Inteligencia Artificial para que tu equipo venda más y trabaje mejor.</p>
+        <p class="pitch-sub">Con más de 4 años conectando marketing, ventas y tecnología, ayudo a negocios a escalar su presencia digital y acelerar su crecimiento comercial.</p>
+      </div>
+    </section>
+
+    <!-- 2. SERVICIOS (Cómo puedo ayudarte) -->
+    <section class="services-section" id="services">
+      <h2 class="section-title">¿Cómo puedo ayudarte?</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>💻 Desarrollo Web & IA</h3>
+          <p>Creación de Landing Pages rápidas orientadas a la conversión (Next.js, Astro) y automatización de procesos operativos con Inteligencia Artificial.</p>
+        </div>
+        <div class="service-card">
+          <h3>📱 Estrategia de Contenidos</h3>
+          <p>Edición de video orgánico (Hooks en tendencia) y gestión de comunidades para multiplicar el alcance y la retención en TikTok, IG y YouTube.</p>
+        </div>
+        <div class="service-card">
+          <h3>📈 Ventas & Operaciones (B2B/B2C)</h3>
+          <p>Gestión de CRM, estrategias de Email Marketing, Cold Calling y sincronización de equipos para cierres de ventas High-Ticket.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CARPETAS DE EXPERIENCIA (Interactivos) -->
+    <section class="experience-section" id="projects">
+      <h2 class="section-title">Mi Experiencia</h2>
+      <p class="instruction">Haz doble clic en las carpetas para abrir los archivos.</p>
+      
+      <div class="folders-grid">
+        <!-- Carpeta 1 -->
+        <div class="mac-folder" onclick="openFolder('modal-yprealty')">
+          <svg viewBox="0 0 100 100" class="folder-icon"><path fill="#71b1ff" d="M10 20h30l10 10h40v60H10z"/><path fill="#97c9ff" d="M10 35h80v45H10z"/></svg>
+          <span>YP Realty</span>
+        </div>
+        <!-- Carpeta 2 -->
+        <div class="mac-folder" onclick="openFolder('modal-panhouse')">
+          <svg viewBox="0 0 100 100" class="folder-icon"><path fill="#71b1ff" d="M10 20h30l10 10h40v60H10z"/><path fill="#97c9ff" d="M10 35h80v45H10z"/></svg>
+          <span>PanHouse</span>
+        </div>
+        <!-- Carpeta 3 -->
+        <div class="mac-folder" onclick="openFolder('modal-eurobuilding')">
+          <svg viewBox="0 0 100 100" class="folder-icon"><path fill="#71b1ff" d="M10 20h30l10 10h40v60H10z"/><path fill="#97c9ff" d="M10 35h80v45H10z"/></svg>
+          <span>Eurobuilding</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CLIENTES / MARCAS (Social Proof) -->
+    <section class="clients-section">
+      <h2 class="section-title">Han confiado en mí</h2>
+      <div class="clients-box">
+        <p><em>(Aquí luego subiremos los logos de las marcas con las que has trabajado: YP Realty, Active Learning Education, PanHouse, Eurobuilding, Dislocal...)</em></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- VENTANAS EMERGENTES (MODALES DE EXPERIENCIA) -->
+  <!-- ========================================== -->
+  
+  <div id="modal-yprealty" class="modal-overlay hidden">
+    <div class="mac-window modal-window">
+      <div class="window-header">
+        <div class="mac-buttons"><span class="btn close" onclick="closeFolder('modal-yprealty')"></span></div>
+        <div class="window-title">YP Realty.pdf</div>
+      </div>
+      <div class="window-content">
+        <h3>Social Media Manager & Video Editor</h3>
+        <p><strong>Jul. 2026 - Presente | Puerto Rico</strong></p>
+        <ul>
+          <li>Lidero la estrategia de contenido y edición de video aplicando hooks en tendencia.</li>
+          <li>Analizo métricas en Meta Business Suite logrando picos de +604% en interacciones.</li>
+          <li>Aplico SEO para maximizar conversión inmobiliaria.</li>
+        </ul>
+        <button class="btn-close-modal" onclick="closeFolder('modal-yprealty')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-panhouse" class="modal-overlay hidden">
+    <div class="mac-window modal-window">
+      <div class="window-header">
+        <div class="mac-buttons"><span class="btn close" onclick="closeFolder('modal-panhouse')"></span></div>
+        <div class="window-title">PanHouse.pdf</div>
+      </div>
+      <div class="window-content">
+        <h3>Coordinadora de Comunicaciones Internas</h3>
+        <p><strong>Mar. 2024 - Ago. 2025</strong></p>
+        <ul>
+          <li>Diseñé sistemas de automatización con IA (ChatGPT, Claude) reduciendo tiempos de atención.</li>
+          <li>Segmentación de CRM y campañas de Email Marketing.</li>
+          <li>Sincronización de Marketing, Ventas y RRPP para eventos VIP.</li>
+        </ul>
+        <button class="btn-close-modal" onclick="closeFolder('modal-panhouse')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-eurobuilding" class="modal-overlay hidden">
+    <div class="mac-window modal-window">
+      <div class="window-header">
+        <div class="mac-buttons"><span class="btn close" onclick="closeFolder('modal-eurobuilding')"></span></div>
+        <div class="window-title">Eurobuilding.pdf</div>
+      </div>
+      <div class="window-content">
+        <h3>Coordinadora B2B & Business Center</h3>
+        <p><strong>Ago. 2022 - Jul. 2023</strong></p>
+        <ul>
+          <li>Gestión de portafolio corporativo (B2B) bajo estándares de calidad 5 estrellas.</li>
+          <li>Centralicé operaciones entre 7 departamentos críticos (Sistemas, Ventas, Cocina, etc).</li>
+          <li>Resolución del 100% de incidencias operativas complejas.</li>
+        </ul>
+        <button class="btn-close-modal" onclick="closeFolder('modal-eurobuilding')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LA BARRA FLOTANTE (DOCK) -->
   <nav class="floating-dock">
     <ul class="dock-list">
-      
-      <!-- 1. About Me (Tu icono de Notas) -->
-      <li class="dock-item" data-tooltip="About Me">
-        <a href="#about" class="dock-link">
-          <img src="notas.webp" alt="Notes" class="mac-icon">
-        </a>
-      </li>
-
-      <!-- 2. Proyectos (Tu icono de Fotos) -->
-      <li class="dock-item" data-tooltip="Projects">
-        <a href="#projects" class="dock-link">
-          <img src="foto.png" alt="Photos" class="mac-icon">
-        </a>
-      </li>
-
-      <!-- 3. Servicios (Tu icono de Finder) -->
-      <li class="dock-item" data-tooltip="Services">
-        <a href="#services" class="dock-link">
-          <img src="finder icon.png" alt="Services" class="mac-icon">
-        </a>
-      </li>
-
-      <!-- 4. Contáctame (Tu icono de Mail) -->
-      <li class="dock-item" data-tooltip="Contact Me">
-        <a href="#contact" class="dock-link">
-          <img src="ICON MAIL.webp" alt="Mail" class="mac-icon">
-        </a>
-      </li>
-
+      <li class="dock-item" data-tooltip="About Me"><a href="#about" class="dock-link"><img src="notas.webp" class="mac-icon"></a></li>
+      <li class="dock-item" data-tooltip="Experience"><a href="#projects" class="dock-link"><img src="foto.png" class="mac-icon"></a></li>
+      <li class="dock-item" data-tooltip="Services"><a href="#services" class="dock-link"><img src="finder icon.png" class="mac-icon"></a></li>
+      <li class="dock-item" data-tooltip="Contact Me"><a href="#contact" class="dock-link"><img src="ICON MAIL.webp" class="mac-icon"></a></li>
     </ul>
   </nav>
+
+  <!-- Script para que las carpetas se abran al hacer clic -->
+  <script>
+    function openFolder(modalId) {
+      document.getElementById(modalId).classList.remove('hidden');
+    }
+    function closeFolder(modalId) {
+      document.getElementById(modalId).classList.add('hidden');
+    }
+  </script>
 
 </body>
 </html>
