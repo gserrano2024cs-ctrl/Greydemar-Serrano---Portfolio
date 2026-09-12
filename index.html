@@ -1,1 +1,132 @@
+/* Configuración básica para que veas el efecto (puedes borrarlo luego) */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #121212; /* Fondo oscuro para que resalte el efecto cristal */
+  height: 200vh; /* Solo para probar que la barra sigue flotando al hacer scroll */
+}
 
+/* =========================================
+   ESTILOS DE LA BARRA FLOTANTE (DOCK)
+   ========================================= */
+
+.floating-dock {
+  position: fixed;
+  bottom: 24px; /* Separación desde abajo */
+  left: 50%;
+  transform: translateX(-50%); /* Centrado perfecto */
+  
+  /* Efecto Glassmorphism (Cristal) */
+  background: rgba(255, 255, 255, 0.08); /* Fondo semi-transparente */
+  backdrop-filter: blur(16px); /* Desenfoque del fondo */
+  -webkit-backdrop-filter: blur(16px); /* Soporte para Safari */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Borde sutil brillante */
+  
+  border-radius: 100px; /* Forma de píldora */
+  padding: 10px 16px;
+  z-index: 9999; /* Siempre por encima de todo */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+}
+
+.dock-list {
+  display: flex;
+  gap: 16px; /* Espacio entre los iconos */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.dock-item {
+  position: relative; /* Necesario para posicionar el texto tooltip */
+  display: flex;
+  justify-content: center;
+}
+
+/* El botón circular de cada icono */
+.dock-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  text-decoration: none;
+  /* Transición suave para las animaciones */
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Estilos de los Iconos SVG */
+.dock-link svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse (Hover) */
+.dock-link:hover {
+  background: rgba(255, 255, 255, 0.2); /* Se ilumina */
+  transform: scale(1.15) translateY(-5px); /* Crece y sube un poco */
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================
+   TOOLTIPS (LOS TEXTOS FLOTANTES)
+   ========================================= */
+
+.dock-item::before {
+  content: attr(data-tooltip); /* Toma el texto del HTML */
+  position: absolute;
+  top: -45px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) scale(0.9);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  white-space: nowrap;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dock-item:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1); /* El texto aparece y sube */
+}
+
+/* =========================================
+   DISEÑO RESPONSIVE (CELULARES)
+   ========================================= */
+@media (max-width: 600px) {
+  .floating-dock {
+    bottom: 16px;
+    padding: 8px 12px;
+  }
+  .dock-list {
+    gap: 12px;
+  }
+  .dock-link {
+    width: 44px;
+    height: 44px;
+  }
+  .dock-link svg {
+    width: 20px;
+    height: 20px;
+  }
+  /* En móviles quitamos el hover del texto porque no hay mouse */
+  .dock-item::before {
+    display: none; 
+  }
+}
