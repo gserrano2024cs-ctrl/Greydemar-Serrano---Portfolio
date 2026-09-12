@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Portafolio</title>
-  
-  <!-- Aquí es donde ocurre la magia: conectamos el archivo CSS -->
   <link rel="stylesheet" href="css/styles.css">
-  
 </head>
 <body>
 
@@ -15,31 +12,32 @@
   <nav class="floating-dock">
     <ul class="dock-list">
       
-      <!-- 1. About Me (Icono de Notas) -->
+      <!-- 1. About Me (Icono de Notas de macOS) -->
       <li class="dock-item" data-tooltip="About Me">
         <a href="#about" class="dock-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5z"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2zM8 7h8M8 11h8M8 15h6"/></svg>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Apple_Notes_Icon_%282020%29.png" alt="Notes" class="mac-icon">
         </a>
       </li>
 
-      <!-- 2. Proyectos (Icono de Fotos/Galería) -->
+      <!-- 2. Proyectos (Icono de Fotos de macOS) -->
       <li class="dock-item" data-tooltip="Projects">
         <a href="#projects" class="dock-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Apple_Photos_Icon_%282020%29.png" alt="Photos" class="mac-icon">
         </a>
       </li>
 
-      <!-- 3. Servicios (Icono de Carita/Ayuda) -->
+      <!-- 3. Servicios (Icono de Mensajes/Soporte estilo macOS) -->
       <li class="dock-item" data-tooltip="Services">
         <a href="#services" class="dock-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          <!-- Usamos el ícono de Mensajes de Mac, funciona bien para 'servicios/comunicación' -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IMessage_logo.svg" alt="Services" class="mac-icon">
         </a>
       </li>
 
-      <!-- 4. Contáctame (Icono de Correo) -->
+      <!-- 4. Contáctame (Icono de Mail de macOS) -->
       <li class="dock-item" data-tooltip="Contact Me">
         <a href="#contact" class="dock-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Mac_Mail_icon.png" alt="Mail" class="mac-icon">
         </a>
       </li>
 
