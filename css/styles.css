@@ -15,25 +15,26 @@ body {
   left: 50%;
   transform: translateX(-50%); 
   
-  /* Efecto Glassmorphism más parecido a macOS */
+  /* Efecto Glassmorphism */
   background: rgba(255, 255, 255, 0.15); 
   backdrop-filter: blur(20px); 
   -webkit-backdrop-filter: blur(20px); 
   border: 1px solid rgba(255, 255, 255, 0.2); 
   
-  border-radius: 24px; /* Un poco más cuadrado, estilo dock moderno de Mac */
-  padding: 8px 12px;
+  /* Hacemos la caja más grande */
+  border-radius: 32px; 
+  padding: 12px 20px; 
   z-index: 9999;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .dock-list {
   display: flex;
-  gap: 12px; 
+  gap: 16px; /* Más espacio entre los iconos */
   list-style: none;
   margin: 0;
   padding: 0;
-  align-items: flex-end; /* Alineamos abajo para que crezcan hacia arriba */
+  align-items: flex-end; 
 }
 
 .dock-item {
@@ -42,29 +43,27 @@ body {
   justify-content: center;
 }
 
-/* El enlace ya no tiene fondo circular, es invisible, solo contiene la imagen */
 .dock-link {
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  padding-bottom: 5px; /* Espacio sutil abajo */
+  padding-bottom: 5px; 
 }
 
-/* Estilos de las Imágenes (Iconos Mac) */
+/* Estilos de las Imágenes (Iconos Mac) - ¡AHORA MÁS GRANDES! */
 .mac-icon {
-  width: 48px;
-  height: 48px;
-  /* El efecto de salto tipo Mac */
+  width: 60px;  /* Antes era 48px */
+  height: 60px; /* Antes era 48px */
   transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
-  transform-origin: bottom center; /* Para que crezca desde la base */
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); /* Sombra bonita al icono */
+  transform-origin: bottom center; 
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); 
 }
 
-/* Efecto al pasar el mouse (Hover) - Crecen como en Mac */
+/* Efecto al pasar el mouse (Hover) */
 .dock-link:hover .mac-icon {
-  transform: scale(1.4) translateY(-10px); 
-  margin: 0 10px; /* Separa los iconos vecinos un poco */
+  transform: scale(1.4) translateY(-12px); /* Saltan un poco más alto */
+  margin: 0 12px; /* Se separan más de los lados */
 }
 
 /* =========================================
@@ -74,13 +73,13 @@ body {
 .dock-item::before {
   content: attr(data-tooltip);
   position: absolute;
-  top: -45px;
+  top: -50px;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  font-size: 13px;
+  font-size: 14px; /* Letra un poquito más grande */
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 5px 12px;
+  border-radius: 8px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px) scale(0.9);
@@ -94,7 +93,7 @@ body {
 .dock-item:hover::before {
   opacity: 1;
   visibility: visible;
-  top: -55px; /* Sube más porque el icono creció mucho */
+  top: -65px; /* Sube más porque el icono ahora es más grande */
   transform: translateY(0) scale(1);
 }
 
@@ -104,17 +103,16 @@ body {
 @media (max-width: 600px) {
   .floating-dock {
     bottom: 16px;
-    padding: 6px 10px;
-    border-radius: 20px;
+    padding: 10px 16px;
+    border-radius: 28px;
   }
   .dock-list {
-    gap: 8px;
+    gap: 12px;
   }
   .mac-icon {
-    width: 40px;
-    height: 40px;
+    width: 48px; /* En celulares también crecieron (antes eran de 40px) */
+    height: 48px;
   }
-  /* En móviles quitamos los efectos locos y tooltips */
   .dock-link:hover .mac-icon {
     transform: none;
     margin: 0;
