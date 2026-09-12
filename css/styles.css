@@ -1,36 +1,251 @@
+/* =========================================
+   DISEÑO BASE (Estilo macOS Light Mode)
+   ========================================= */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: #121212; 
-  height: 200vh; 
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f5f7; /* Gris súper claro típico de Apple */
+  color: #1d1d1f; /* Texto oscuro elegante */
+  padding-bottom: 120px; /* Espacio para el Dock */
+}
+
+.desktop-environment {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
 /* =========================================
-   ESTILOS DE LA BARRA FLOTANTE (DOCK)
+   VENTANAS ESTILO MAC
    ========================================= */
+.mac-window {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin-bottom: 50px;
+}
 
+.window-header {
+  background: #e8e8ed;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid #d1d1d6;
+  position: relative;
+}
+
+.mac-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btn.close { background: #ff5f56; border: 1px solid #e0443e; }
+.btn.min { background: #ffbd2e; border: 1px solid #dea123; }
+.btn.max { background: #27c93f; border: 1px solid #1aab29; }
+
+/* Botón rojo que se puede clickear en los modales */
+.btn.close:hover { filter: brightness(0.8); } 
+
+.window-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  font-weight: 600;
+  color: #49494d;
+}
+
+.window-content {
+  padding: 40px;
+}
+
+.window-content h1 {
+  font-size: 2.8rem;
+  margin-top: 0;
+  letter-spacing: -0.02em;
+}
+
+.highlight {
+  color: #0066cc; /* Azul premium de enlaces Apple */
+}
+
+.pitch {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.pitch-sub {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* =========================================
+   SECCIONES Y TARJETAS (Servicios)
+   ========================================= */
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.instruction {
+  text-align: center;
+  color: #888;
+  margin-top: -15px;
+  margin-bottom: 30px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.service-card {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  transition: transform 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   CARPETAS ESTILO MAC (Experiencia)
+   ========================================= */
+.folders-grid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.mac-folder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  width: 100px;
+}
+
+.mac-folder:hover {
+  transform: scale(1.1);
+}
+
+.folder-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+}
+
+.mac-folder span {
+  background: rgba(0,0,0,0.05);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* =========================================
+   MODALES (VENTANAS QUE SE ABREN AL CLIC)
+   ========================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Por encima de todo */
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-window {
+  width: 90%;
+  max-width: 600px;
+  margin-bottom: 0;
+  animation: popIn 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.modal-window ul {
+  line-height: 1.6;
+  color: #444;
+}
+
+.btn-close-modal {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.clients-box {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px dashed #ccc;
+}
+
+/* =========================================
+   LA BARRA FLOTANTE (DOCK) - MANTENIDA
+   ========================================= */
 .floating-dock {
   position: fixed;
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%); 
-  
-  /* Efecto Glassmorphism */
-  background: rgba(255, 255, 255, 0.15); 
+  background: rgba(255, 255, 255, 0.5); 
   backdrop-filter: blur(20px); 
   -webkit-backdrop-filter: blur(20px); 
-  border: 1px solid rgba(255, 255, 255, 0.2); 
-  
-  /* Hacemos la caja más grande */
-  border-radius: 32px; 
-  padding: 12px 20px; 
+  border: 1px solid rgba(255, 255, 255, 0.6); 
+  border-radius: 28px; 
+  padding: 10px 16px;
   z-index: 9999;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .dock-list {
   display: flex;
-  gap: 16px; /* Más espacio entre los iconos */
+  gap: 16px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -51,73 +266,48 @@ body {
   padding-bottom: 5px; 
 }
 
-/* Estilos de las Imágenes (Iconos Mac) - ¡AHORA MÁS GRANDES! */
 .mac-icon {
-  width: 60px;  /* Antes era 48px */
-  height: 60px; /* Antes era 48px */
+  width: 64px; 
+  height: 64px; 
   transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
   transform-origin: bottom center; 
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); 
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15)); 
 }
 
-/* Efecto al pasar el mouse (Hover) */
 .dock-link:hover .mac-icon {
-  transform: scale(1.4) translateY(-12px); /* Saltan un poco más alto */
-  margin: 0 12px; /* Se separan más de los lados */
+  transform: scale(1.3) translateY(-12px); 
+  margin: 0 14px; 
 }
-
-/* =========================================
-   TOOLTIPS (LOS TEXTOS FLOTANTES)
-   ========================================= */
 
 .dock-item::before {
   content: attr(data-tooltip);
   position: absolute;
-  top: -50px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  font-size: 14px; /* Letra un poquito más grande */
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  top: -45px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  font-size: 14px;
   padding: 5px 12px;
   border-radius: 8px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px) scale(0.9);
-  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.2s ease;
   white-space: nowrap;
   pointer-events: none;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  letter-spacing: 0.3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .dock-item:hover::before {
   opacity: 1;
   visibility: visible;
-  top: -65px; /* Sube más porque el icono ahora es más grande */
+  top: -55px; 
   transform: translateY(0) scale(1);
 }
 
-/* =========================================
-   DISEÑO RESPONSIVE (CELULARES)
-   ========================================= */
 @media (max-width: 600px) {
-  .floating-dock {
-    bottom: 16px;
-    padding: 10px 16px;
-    border-radius: 28px;
-  }
-  .dock-list {
-    gap: 12px;
-  }
-  .mac-icon {
-    width: 48px; /* En celulares también crecieron (antes eran de 40px) */
-    height: 48px;
-  }
-  .dock-link:hover .mac-icon {
-    transform: none;
-    margin: 0;
-  }
-  .dock-item::before {
-    display: none; 
-  }
+  .window-content h1 { font-size: 2rem; }
+  .mac-icon { width: 52px; height: 52px; }
+  .dock-link:hover .mac-icon { transform: none; margin: 0; }
+  .dock-item::before { display: none; }
 }
